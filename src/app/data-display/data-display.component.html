@@ -1,0 +1,20 @@
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(data of data; track data.BookID){
+      <tr>
+        <td>{{ data.BookID }}</td>
+        <td>{{ data.BookName }}</td>
+        <td>{{ data.Author }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
