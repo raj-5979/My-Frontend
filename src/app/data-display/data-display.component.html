@@ -1,20 +1,65 @@
-<div>
-  <table>
-    <thead>
+<div class="card">
+  <p-toolbar>
+    <div class="p-toolbar-group-start">
+      <p-button
+        severity="success"
+        label="New"
+        icon="pi pi-plus"
+        class="mr-2"
+      />
+    </div>
+    <div class="p-toolbar-group-center">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input 
+              pInputText
+              placeholder="Search" />
+      </span>
+    </div>
+    <div class="p-toolbar-group-end">
+      <p-inputSwitch [(ngModel)]="checked" (click)="onThemeChange(checked ? 'light' :'dark')" />
+    </div>
+  </p-toolbar>
+  <p-table
+    [value]="data"
+    [tableStyle]="{ 'min-width': '75rem' }"
+    [rowHover]="true"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <h5 class="m-0">Book Store</h5>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
       <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Author</th>
+        <th style="min-width: 10rem">Id</th>
+        <th style="min-width: 15rem">Name</th>
+        <th style="min-width: 15rem">Author</th>
+        <th style="min-width: 15rem">Price(Rs.)</th>
       </tr>
-    </thead>
-    <tbody>
-      @for(data of data; track data.BookID){
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
       <tr>
         <td>{{ data.BookID }}</td>
         <td>{{ data.BookName }}</td>
         <td>{{ data.Author }}</td>
+        <td>{{ data.price }}</td>
+        <td>
+          <p-button
+            icon="pi pi-pencil"
+            class="mr-2"
+            [rounded]="true"
+            [outlined]="true"
+            severity="success"
+          />&nbsp;&nbsp;
+          <p-button
+            icon="pi pi-trash"
+            severity="danger"
+            [rounded]="true"
+            [outlined]="true"
+          />
+        </td>
       </tr>
-      }
-    </tbody>
-  </table>
+    </ng-template>
+  </p-table>
 </div>
